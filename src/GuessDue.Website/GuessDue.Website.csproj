@@ -57,10 +57,24 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="custom.css">
+      <DependentUpon>custom.less</DependentUpon>
+    </Content>
+    <Content Include="custom.min.css">
+      <DependentUpon>custom.less</DependentUpon>
+    </Content>
     <Content Include="index.html" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-2.0.3.min.js" />
+    <Content Include="js\jquery-ui-1.10.3.custom.js" />
     <Content Include="js\less-1.4.1.min.js" />
+    <Content Include="js\rangeSlider.js" />
+    <Content Include="less\rangeSlider.css">
+      <DependentUpon>rangeSlider.less</DependentUpon>
+    </Content>
+    <Content Include="less\rangeSlider.min.css">
+      <DependentUpon>rangeSlider.less</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +121,8 @@
     <Content Include="less\bootstrap\utilities.less" />
     <Content Include="less\bootstrap\variables.less" />
     <Content Include="less\bootstrap\wells.less" />
+    <Content Include="custom.less" />
+    <Content Include="less\rangeSlider.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
