@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>GuessDue</title>
+    <link rel="stylesheet/less" type="text/css" href="../less/bootstrap/bootstrap.less" />
+    <script src="../js/less-1.4.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Sticky footer with fixed navbar</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">Gender</a>
+                    <a href="#" class="list-group-item">Date</a>
+                    <a href="#" class="list-group-item">Time</a>
+                    <a href="#" class="list-group-item">Weight</a>
+                    <a href="#" class="list-group-item">Length</a>
+                    <a href="#" class="list-group-item">Hair</a>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Gender</div>
+                    <div class="panel-body">
+                        <label for="gender">Which gender do you think Baby P. will be?</label>
+
+                        <p>
+                            <button type="button" class="btn btn-lg btn-default">Male</button>
+                            <button type="button" class="btn btn-lg btn-default">Female</button>
+                        </p>
+                        <p>
+                            <button type="button" class="btn btn-primary">Back</button>
+                            <button type="button" class="btn btn-success">Next</button>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Date</div>
+                    <div class="panel-body">
+                        <label for="gender">On what date do you think Baby P. will born on?</label>
+
+                        <div id="calendar" class="calendar">
+                        </div>
+                        <p>
+                            <button type="button" class="btn btn-primary">Back</button>
+                            <button type="button" class="btn btn-success">Next</button>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Time</div>
+                    <div class="panel-body">
+                        <label for="gender">What hour of the day do you think Baby P. will born during?</label>
+
+                        <div id="hours" class="hours">
+                        </div>
+                        <p>
+                            <button type="button" class="btn btn-primary">Back</button>
+                            <button type="button" class="btn btn-success">Next</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+            <p>&copy; Company 2013</p>
+        </footer>
+    </div>
+    <!-- /container -->
+
+    <script src="../js/jquery-2.0.3.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        .calendar {
+            border-collapse: collapse;
+        }
+
+        .week {
+            min-height: 5em;
+            clear: left;
+        }
+        .days {
+            border-bottom: 1px solid #dddddd;
+        }
+        .days .day {
+            text-align: center;
+        }
+        .day {
+            display: inline-block;
+            width: 14.2857%;
+        }
+        .day a {
+            padding: 4px;
+            display: block;
+            width: 100%;
+            height: 5em;
+            border-right: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd;
+        }
+            .day a:first-child {
+            border-left: 1px solid #dddddd;
+            }            
+        .day a:hover {
+            
+            background-color: #f5f5f5;
+        }
+
+        .expected {
+            border: 1px solid #ff6a00;
+        }
+
+
+        a.hours {
+        }
+    </style>
+    <script>
+
+        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // Names of months for drop-down and formatting
+        var monthNamesShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; // For formatting
+        var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // For formatting
+        var dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // For formatting
+        var dayNamesMin = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]; // Column headings for days starting at Sunday
+
+        $(document).ready(function ()
+        {
+            createCalendar();
+
+            createHours();
+
+        });
+
+        function createHours()
+        {
+            var hours = $("#hours");
+
+            var amHours = $('<div class="am-hours list-group col-lg-6"><p>Morning</p></div>');
+
+            for(var i = 0; i < 12; i++)
+            {
+                var hour = i;
+
+                if (i == 0)
+                    hour = 12;
+                amHours.append($('<a href="#" class="hours list-group-item">' + hour + 'am to ' + (i+1) + 'am</a>'));
+            }
+
+            hours.append(amHours);
+
+            var pmHours = $('<div class="pm-hours list-group col-lg-6"><p>Afternoon / Evening</p></div>');
+
+            for (var i = 0; i < 12; i++)
+            {
+                var hour = i + 1;
+
+                if (i == 0)
+                    hour = 12;
+                pmHours.append($('<a href="#" class="hours list-group-item">' + hour + 'pm</a>'));
+            }
+
+            hours.append(pmHours);
+
+
+        }
+
+        function createCalendar()
+        {
+            var weeksBeforeExpectedDate = 3;
+            var weeksAfterExpectedDate = 3;
+
+            var expectedDate = new Date("12/16/2013");
+
+            var expectedYear = expectedDate.getFullYear();
+            var expectedMonth = expectedDate.getMonth();
+            var expectedMonthDate = expectedDate.getDate();
+            var expectedDayOfWeek = expectedDate.getDay();
+
+            var calendarStartDay = expectedMonthDate;
+
+            if (expectedDayOfWeek > 0)
+                calendarStartDay = expectedMonthDate - expectedDayOfWeek;
+
+            // start the calendar 2 weeks before the expected date
+            calendarStartDay -= weeksBeforeExpectedDate * 7;
+
+            var calendarStartDate = new Date(expectedYear, expectedMonth, calendarStartDay);
+
+            var week;
+            var month;
+
+            var calendar = $("#calendar");
+
+            var days = $('<div class="days"></div>')
+
+            for (var i = 0; i < 7; i++)
+            {
+                days.append('<div class="day">' + dayNamesShort[i] + '</div>');
+            }
+
+            calendar.append(days);
+
+            for (var i = 0; i < (weeksBeforeExpectedDate * 7 + weeksAfterExpectedDate * 7) ; i++)
+            {
+                var newDate = new Date(expectedYear, expectedMonth, calendarStartDay + i);
+                var item = $('<div class="day"></div>');
+
+                var prefix = "";
+
+                if (month != newDate.getMonth())
+                {
+                    prefix = monthNamesShort[newDate.getMonth()];
+                    month = newDate.getMonth();
+                }
+
+                item.append(getHtml(prefix, newDate));
+
+                if (newDate.getTime() == expectedDate.getTime())
+                    item.addClass("expected");
+
+                if (newDate.getDay() == 0)
+                {
+                    calendar.append(week);
+                    week = $('<div class="week"></div>');
+                }
+
+                week.append(item);
+            }
+
+            calendar.append(week);
+        }
+
+        function getHtml(prefix, date)
+        {
+            if (prefix.length > 0)
+            return $('<a href="#"><span class="prefix">' + prefix + '</span> ' + date.getDate() + '</a>');
+            else
+                return $('<a href="#">' + date.getDate() + '</a>');
+        }
+    </script>
+</body>
+</html>
