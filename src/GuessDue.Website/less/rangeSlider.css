@@ -1,15 +1,15 @@
 ﻿.rangeSlider {
-  height: 20px;
+  height: 30px;
   border: 1px solid #dddddd;
   border-radius: 4px;
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin: 38px 0;
   position: relative;
   cursor: pointer;
+  background-color: #f5f5f5;
 }
 .rangeSlider .range {
-  width: 100px;
-  height: 24px;
+  width: 150px;
+  height: 34px;
   border-radius: 4px;
   position: absolute;
   border: 1px solid #4cae4c;
@@ -18,8 +18,8 @@
   background-color: #5cb85c;
 }
 .rangeSlider .range .handle {
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
   border-radius: 4px;
   position: absolute;
   border: 1px solid #357ebd;
@@ -34,13 +34,14 @@
 }
 .rangeSlider .range .label {
   position: absolute;
+  width: 60px;
   border-radius: 4px;
   border: 1px solid #357ebd;
   background-color: #428bca;
 }
 .rangeSlider .range .label.min {
-  left: -50%;
-  top: -26px;
+  left: -32px;
+  top: -28px;
 }
 .rangeSlider .range .label.min:after {
   content: "";
@@ -55,8 +56,8 @@
   margin-left: -8px;
 }
 .rangeSlider .range .label.max {
-  right: -50%;
-  top: 30px;
+  right: -32px;
+  top: 42px;
 }
 .rangeSlider .range .label.max:after {
   content: "";

@@ -1,5 +1,6 @@
 ﻿
-@size: 20px;
+@size: 30px;
+@margin: 38px;
 @handleOffset: 4px;
 
 @borderColor: #dddddd;
@@ -10,16 +11,17 @@
 @rangeBackgroundColor: #5cb85c;
 @rangeBorderColor: #4cae4c;
 
+@labelWidth: 60px;
 @arrowSize: 8px;
 
 .rangeSlider {
     height: @size;
     border: 1px solid @borderColor;
     border-radius: 4px;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin: @margin 0;
     position: relative;
     cursor: pointer;
+    background-color: #f5f5f5;
 
     .range {
         width: @size * 5;
@@ -51,14 +53,15 @@
 
         .label {
             position: absolute;
+            width: 60px;
             border-radius: 4px;
             border: 1px solid @handleBackgroundColor;
             background-color: @handleBorderColor;
         }
 
             .label.min {
-                left: -50%;
-                top: -26px;
+                left: (-@labelWidth - @arrowSize/2)/2;
+                top: -@size + @handleOffset / 2;
             }
 
             .label.min:after
@@ -76,8 +79,8 @@
                 }
 
             .label.max {
-                right: -50%;
-                top: 30px;
+                right: (-@labelWidth - @arrowSize/2) / 2;
+                top: @size + @handleOffset * 3; 
             }
 
             .label.max:after

@@ -69,6 +69,12 @@
     <Content Include="js\jquery-ui-1.10.3.custom.js" />
     <Content Include="js\less-1.4.1.min.js" />
     <Content Include="js\rangeSlider.js" />
+    <Content Include="less\bootstrap\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="less\bootstrap\bootstrap.min.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
     <Content Include="less\rangeSlider.css">
       <DependentUpon>rangeSlider.less</DependentUpon>
     </Content>

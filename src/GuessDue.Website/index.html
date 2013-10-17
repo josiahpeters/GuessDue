@@ -6,8 +6,8 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>GuessDue</title>
-    <link rel="stylesheet/less" type="text/css" href="../less/bootstrap/bootstrap.less" />
-    <link rel="stylesheet/less" type="text/css" href="../custom.less" />
+    <link rel="stylesheet" type="text/css" href="../less/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../custom.css" />
     <link rel="stylesheet" type="text/css" href="../less/rangeSlider.css" />
     <script src="../js/less-1.4.1.min.js" type="text/javascript"></script>
 </head>
@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="#">GuessDue</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -46,22 +46,23 @@
     </div>
 
     <div class="container">
+        <div class="starter-template">Test</div>
         <div class="page-header">
             <h1>Sticky footer with fixed navbar</h1>
         </div>
         <div class="row">
             <div class="col-lg-4">
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">Gender</a>
-                    <a href="#" class="list-group-item">Date</a>
-                    <a href="#" class="list-group-item">Time</a>
-                    <a href="#" class="list-group-item">Weight</a>
-                    <a href="#" class="list-group-item">Length</a>
-                    <a href="#" class="list-group-item">Hair</a>
+                    <a href="#Gender" class="list-group-item active section">Gender</a>
+                    <a href="#Date" class="list-group-item section">Date</a>
+                    <a href="#Time" class="list-group-item section">Time</a>
+                    <a href="#Weight" class="list-group-item section">Weight</a>
+                    <a href="#Length" class="list-group-item section">Length</a>
+                    <a href="#Hair" class="list-group-item section">Hair</a>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="panel panel-default hidden">
+            <div class="col-lg-8 sections">
+                <div class="panel panel-default" id="Gender">
                     <div class="panel-heading">Gender</div>
                     <div class="panel-body">
                         <label for="gender">Which gender do you think Baby P. will be?</label>
@@ -71,13 +72,12 @@
                             <button type="button" class="btn btn-lg btn-default">Female</button>
                         </p>
                         <p>
-                            <button type="button" class="btn btn-primary">Back</button>
-                            <button type="button" class="btn btn-success">Next</button>
+                            <a href="#Date" class="btn btn-success section">Next</a>
                         </p>
                     </div>
                 </div>
 
-                <div class="panel panel-default hidden">
+                <div class="panel panel-default" id="Date">
                     <div class="panel-heading">Date</div>
                     <div class="panel-body">
                         <label for="gender">On what date do you think Baby P. will be born on?</label>
@@ -85,13 +85,13 @@
                         <div id="calendar" class="calendar">
                         </div>
                         <p>
-                            <button type="button" class="btn btn-primary">Back</button>
-                            <button type="button" class="btn btn-success">Next</button>
+                            <a href="#Gender" class="btn btn-primary section">Back</a>
+                            <a href="#Time" class="btn btn-success section">Next</a>
                         </p>
                     </div>
                 </div>
 
-                <div class="panel panel-default hidden">
+                <div class="panel panel-default" id="Time">
                     <div class="panel-heading">Time</div>
                     <div class="panel-body">
                         <label for="gender">What hour of the day do you think Baby P. will be born during?</label>
@@ -99,22 +99,36 @@
                         <div id="hours" class="hours">
                         </div>
                         <p>
-                            <button type="button" class="btn btn-primary">Back</button>
-                            <button type="button" class="btn btn-success">Next</button>
+                            <a href="#Date" class="btn btn-primary section">Back</a>
+                            <a href="#Weight" class="btn btn-success section">Next</a>
                         </p>
                     </div>
                 </div>
 
-                <div class="panel panel-default">
+                <div class="panel panel-default" id="Weight">
                     <div class="panel-heading">Weight</div>
                     <div class="panel-body">
-                        <label for="gender">What weight range do you think Baby P. will be born in?</label>
+                        <label for="weightSlider">What weight range do you think Baby P. will be born in?</label>
                         <p>
                             <div id="weightSlider"></div>
                         </p>
                         <p>
-                            <button type="button" class="btn btn-primary">Back</button>
-                            <button type="button" class="btn btn-success">Next</button>
+                            <a href="#Time" class="btn btn-primary section">Back</a>
+                            <a href="#Length" class="btn btn-success section">Next</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel panel-default" id="Length">
+                    <div class="panel-heading">Length</div>
+                    <div class="panel-body">
+                        <label for="lengthSlider">What length range do you think Baby P. will be born in?</label>
+                        <p>
+                            <div id="lengthSlider"></div>
+                        </p>
+                        <p>
+                            <a href="#Weight" class="btn btn-primary section">Back</a>
+                            <a href="#Date" class="btn btn-success section">Next</a>
                         </p>
                     </div>
                 </div>
@@ -146,7 +160,36 @@
 
             createHours();
 
+            // custom eval function to convert our range numbers into pounds
             $("#weightSlider").rangeSlider({ min: 16, max: 208, range: 16, unitConversion: function (value) { return (value / 16).toFixed(1) + " lbs"; } });
+            $("#lengthSlider").rangeSlider({ min: 15, max: 41, range: 2, unitConversion: function (value) { return (value).toFixed(1) + " in"; } });
+
+
+            $(window).resize(function ()
+            {
+                $("#weightSlider").rangeSlider("resize");
+                $("#lengthSlider").rangeSlider("resize");
+            });
+
+            $("a.section").click(function ()
+            {
+                var id = $(this).attr("href");
+
+                $(".sections .panel:not(" + id + ")").hide();
+
+                $(id).fadeIn();
+
+                //$(".sections > .panel")
+
+                //.fadeOut({
+                //    done: function ()
+                //    {
+                //        $(id).fadeIn();
+
+                //    }
+                //});
+
+            });
 
         });        
 
